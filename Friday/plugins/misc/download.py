@@ -15,13 +15,13 @@ from urllib.parse import unquote_plus
 
 from pySmartDL import SmartDL
 
-from userge import userge, Message, Config
-from userge.utils import progress, humanbytes
+from friday import friday, Message, Config
+from friday.utils import progress, humanbytes
 
-LOGGER = userge.getLogger(__name__)
+LOGGER = friday.getLogger(__name__)
 
 
-@userge.on_cmd("download", about={
+@friday.on_cmd("download", about={
     'header': "Download files to server",
     'usage': "{tr}download [url | reply to telegram media]",
     'examples': "{tr}download https://speed.hetzner.de/100MB.bin | testing upload.bin"})
@@ -32,12 +32,12 @@ async def down_load_media(message: Message):
     if message.reply_to_message and message.reply_to_message.media:
         start_t = datetime.now()
         c_time = time.time()
-        dl_loc = await userge.download_media(
+        dl_loc = await friday.download_media(
             message=message.reply_to_message,
             file_name=Config.DOWN_PATH,
             progress=progress,
             progress_args=(
-                "trying to download", userge, message, c_time
+                "trying to download", friday, message, c_time
             )
         )
         if message.process_is_canceled:
@@ -105,3 +105,4 @@ async def down_load_media(message: Message):
             await message.edit(f"Downloaded to `{download_file_path}` in {m_s} seconds")
     else:
         await message.edit("Please read `.help download`", del_in=5)
+
