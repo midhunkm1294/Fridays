@@ -13,7 +13,7 @@ __version__ = "{}.{}.{}".format(__version_major__,
                                 if __version_beta__ else __version_micro__)
 
 __license__ = ("[GNU General Public License v3.0]"
-               "(https://github.com/StarkGang/Friday/blob/master/LICENSE)")
+               "(https://github.com/StarkGang/Fridays/blob/master/LICENSE)")
 
 __copyright__ = "Copyright (C) 2020 by [StarkGang@Github](https://github.com/StarkGang)"
 
